@@ -4,6 +4,7 @@ main function
 '''
 from collections.abc import Callable
 
+
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
     '''function that return a callback
     '''
