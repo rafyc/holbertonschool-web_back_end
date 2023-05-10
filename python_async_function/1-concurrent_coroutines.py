@@ -2,7 +2,8 @@
 '''main function
 '''
 from typing import List
-import asyncio
+from asyncio import as_completed, create_task
+
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
@@ -11,7 +12,10 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     '''
     arr = []
     for i in range(n):
-        num = await wait_random(max_delay)
+        num = create_task(wait_random(max_delay))
         arr.append(num)
-    arr.sort()
-    return(arr)
+    sorted = []
+    for j in as_completed(arr):
+        sorted.append(await j)
+
+    return(sorted)
