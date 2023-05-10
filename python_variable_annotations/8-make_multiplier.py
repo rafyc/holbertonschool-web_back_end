@@ -9,7 +9,7 @@ def make_multiplier(multiplier: float) -> Callable[[float], float]:
     '''
     function that return a callback
     '''
-    def callback(number: int) -> float:
+    def callback(number: float) -> float:
         '''
         the callback function
         '''
