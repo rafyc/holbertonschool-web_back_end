@@ -2,7 +2,6 @@
 '''main
 '''
 import asyncio
-import time
 import random
 
 
