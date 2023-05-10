@@ -11,4 +11,3 @@ def sum_list(input_list: List[float]) -> float:
     their sum as a float.
     '''
     return (sum(input_list))
-
