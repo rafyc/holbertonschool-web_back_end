@@ -2,16 +2,12 @@
 '''
 main function
 '''
-from collections.abc import Callable
+from typing import Callable
 
 
 def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    '''
-    function that return a callback
-    '''
+    '''function that return a callback'''
     def callback(number: float) -> float:
-        '''
-        the callback function
-        '''
+        '''the callback function'''
         return (number * multiplier)
     return callback
