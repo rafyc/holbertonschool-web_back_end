@@ -6,8 +6,7 @@ from asyncio import as_completed, create_task
 
 task_wait_random = __import__('3-tasks').task_wait_random
 
-
-async def wait_n(n: int, max_delay: int) -> List[float]:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     '''should return the list of all the delays (float values).
     '''
     arr = []
