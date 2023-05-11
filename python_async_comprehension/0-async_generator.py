@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+'''
+main function
+'''
 
 import random
 import asyncio
