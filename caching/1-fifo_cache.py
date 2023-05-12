@@ -9,7 +9,7 @@ class FIFOCache(BaseCaching):
     put method & get method
     '''
     def put(self, key, item):
-        '''put an item in cache and delet the first if full
+        '''put an item in cache and delet the first if fullp
         '''
         if key is not None and item is not None:
             self.cache_data[key] = item
