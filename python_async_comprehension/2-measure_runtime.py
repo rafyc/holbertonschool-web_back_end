@@ -18,6 +18,7 @@ async def measure_runtime() -> float:
         async_comprehension(),
         async_comprehension(),
         async_comprehension(),
+        async_comprehension(),
     )
     end_time = time.time()
     read_time = end_time - sart_time
