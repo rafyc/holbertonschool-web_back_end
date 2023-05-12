@@ -19,8 +19,8 @@ class LIFOCache(BaseCaching):
                     li = next(iter(self.cache_data))
                 except StopIteration:
                     break
-            self.cache_data.pop(li)
-            print(f"DISCARD: {li}")
+                self.cache_data.pop(li)
+                print(f"DISCARD: {li}")
 
     def get(self, key):
         '''Get an item in the cache"
