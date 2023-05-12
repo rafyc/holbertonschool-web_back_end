@@ -14,12 +14,7 @@ class LIFOCache(BaseCaching):
         if key is not None and item is not None:
             self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            while True:
-                try:
-                    li = next(iter(self.cache_data))
-                except StopIteration:
-                    break
-                self.cache_data.pop(li)
+            self.cache_data.popitem()
             print(f"DISCARD: {li}")
 
     def get(self, key):
