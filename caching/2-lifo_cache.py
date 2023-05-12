@@ -5,7 +5,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LIFOCache(BaseCaching):
- '''
+    '''
     put method & get method
     '''
     def put(self, key, item):
@@ -14,9 +14,11 @@ class LIFOCache(BaseCaching):
         if key is not None and item is not None:
             self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            while True
-                try :
-                   li = next(iter(self.cache_data))
+            while True:
+                try:
+                    li = next(iter(self.cache_data))
+                except StopIteration:
+                    break
                 self.cache_data.pop(li)
                 print(f"DISCARD: {li}")
 
