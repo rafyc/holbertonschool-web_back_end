@@ -15,10 +15,10 @@ async def measure_runtime() -> float:
     """
     sart_time = time.time()
     await asyncio.gather(async_comprehension(),
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension(),
-    )
+                         async_comprehension(),
+                         async_comprehension(),
+                         async_comprehension(),
+                         )
     end_time = time.time()
     read_time = end_time - sart_time
     return read_time
