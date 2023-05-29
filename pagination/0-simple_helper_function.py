@@ -5,7 +5,9 @@ Main file
 
 
 def index_range(page, page_size):
-
+    '''
+    Main helper function
+    '''
     if page == 1:
         start_index = 0
     else:
