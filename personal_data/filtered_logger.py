@@ -13,8 +13,9 @@ def filter_datum(fields: List[str],
     """
     replace string
     """
-    pattern = r"password=([^;\s]+).*?date_of_birth=([^;\s]+)"
+    pattern1 = r"(?<=password=)([^;\s]+)"
+    pattern2 = r"(?<=date_of_birth=)([^;\s]+)"
 
-    result = re.sub(pattern, f"password={redaction};date_of_birth={redaction}",
-                    message)
-    return result
+    result1 = re.sub(pattern1, redaction, message)
+    result2 = re.sub(pattern2, redaction, result1)
+    return result2
