@@ -45,23 +45,24 @@ def filter_datum(fields: List[str], redaction: str,
     return message
 
 
-def get_logger():
-    '''Implement a get_logger function that takes no arguments
-    and returns a logging.Logger object.
-    '''
+def get_logger() -> logging.Logger:
+      """This method get a logger with the 4 steps following :
+    - Create a logger,
+    - Create handler
+    - Create formatters and add it to handler,
+    - Aad handler to the logger
+    Return the logger object
+    """
     logger = logging.getLogger("user_data")
     logger.setLevel(logging.INFO)
     logger.propagate = False
 
-    # Create StreamHandler
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(logging.INFO)
 
-    # Create RedactingFormatter and set it as formatter for the StreamHandler
     redacting_formatter = RedactingFormatter(PII_FIELDS)
     stream_handler.setFormatter(redacting_formatter)
 
-    # Add the StreamHandler to the logger
     logger.addHandler(stream_handler)
 
     return logger
