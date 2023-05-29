@@ -13,9 +13,9 @@ def filter_datum(fields: List[str],
     """
     replace string
     """
-    pattern1 = r"(?<={}=)([^;\s]+)".format(fields[0])
-    pattern2 = r"(?<={}=)([^;\s]+)".format(fields[1])
-
-    result1 = re.sub(pattern1, redaction, message)
-    result2 = re.sub(pattern2, redaction, result1)
-    return result2
+    i = 0
+    while (i < len(fields)):
+        pattern = r"(?<={}=)([^;\s]+)".format(fields[i])
+        message = re.sub(pattern, redaction, message)
+        i += 1
+    return message
