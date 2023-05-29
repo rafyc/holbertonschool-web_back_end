@@ -20,12 +20,15 @@ class RedactingFormatter(logging.Formatter):
         self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
+        """Filter values in incoming log records using filter_datum method
+        """
         formated = filter_datum(self.fields,
                                 RedactingFormatter.REDACTION,
                                 super().format(record),
                                 RedactingFormatter.SEPARATOR)
         return formated
 
+    def get_logger()
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
