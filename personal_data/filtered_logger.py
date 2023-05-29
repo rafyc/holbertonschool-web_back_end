@@ -46,7 +46,7 @@ def filter_datum(fields: List[str], redaction: str,
 
 
 def get_logger() -> logging.Logger:
-      """This method get a logger with the 4 steps following :
+    """This method get a logger with the 4 steps following :
     - Create a logger,
     - Create handler
     - Create formatters and add it to handler,
