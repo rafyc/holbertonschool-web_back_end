@@ -6,16 +6,12 @@ import re
 from typing import List, Tuple
 
 
-def filter_datum(fields: List[str],
-                 redaction: str,
-                 message: str,
-                 separator: str) -> str:
+def filter_datum(fields: List[str], redaction: str,
+                 message: str, separator: str) -> str:
+    """Return the log message obfuscated by 'redaction' argument
     """
-    replace string
-    """
-    i = 0
-    while (i < len(fields)):
-        pattern = r"(?<={}=)([^;\s]+)".format(fields[i])
-        message = re.sub(pattern, redaction, message)
-        i += 1
+    for i in fields:
+        message = re.sub(i + '=.+?' + separator,
+                         i + '=' + redaction + separator,
+                         message)
     return message
