@@ -10,6 +10,9 @@ def filter_datum(fields: List[str],
                  redaction: str,
                  message: str,
                  separator: str) -> str:
+    """
+    replace string
+    """
     pattern = r"password=([^;\s]+).*date_of_birth=([^;\s]+)"
 
     result = re.sub(pattern, f"password={redaction};date_of_birth={redaction}",
