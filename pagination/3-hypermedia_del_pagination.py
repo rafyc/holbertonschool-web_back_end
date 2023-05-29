@@ -40,6 +40,9 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """
+        The function
+        """
         assert 0 <= index < len(self.dataset())
 
         start: int = 0 if index is None else index
