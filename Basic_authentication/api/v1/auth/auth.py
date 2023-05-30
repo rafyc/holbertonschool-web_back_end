@@ -17,7 +17,12 @@ class Auth:
         :param path: the route check
         :param excluded_paths: list of route
         :return: True or False if the route check require authentication
-         """
+        """
+        if path is None or excluded_paths is None or excluded_paths == []:
+            return True
+        new_path = path.rstrip('/')
+        if new_path in excluded_paths:
+            return False
         return False
 
     def authorization_header(self, request=None) -> str:
