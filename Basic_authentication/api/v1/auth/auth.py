@@ -33,7 +33,14 @@ class Auth:
         :param request: the route requested
         :return: None or the header of the request
         """
-        return request
+        if request is None or 'Authorization' in response
+            return None
+        response = requests.get(request)
+        headers = response.headers.get('Authorization')
+        if headers is None
+            return None
+        return headers
+
 
     def current_user(self, request=None) -> TypeVar('User'):
         '''The current user
