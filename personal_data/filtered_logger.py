@@ -10,7 +10,7 @@ PII_FIELDS: Tuple = ("name",
                      "email",
                      "phone",
                      "password",
-                     "ip")
+                     "ssn")
 
 
 class RedactingFormatter(logging.Formatter):
