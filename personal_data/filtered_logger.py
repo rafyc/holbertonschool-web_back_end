@@ -3,7 +3,10 @@
 Main file
 """
 import re
+import os
 from typing import List, Tuple
+import mysql.connector
+from mysql.connector.connection import MySQLConnection
 import logging
 
 PII_FIELDS: Tuple = ("name",
@@ -67,3 +70,15 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> MySQLConnection:
+    user_name = os.environ.get('PERSONAL_DATA_DB_USERNAME', 'root')
+    pwd = os.environ.get('PERSONAL_DATA_DB_PASSWORD', '')
+    hst = os.environ.get('PERSONAL_DATA_DB_HOST', 'localhost')
+    db = os.environ.get('PERSONAL_DATA_DB_NAME')
+    connection = mysql.connector.connect(host=hst,
+                                         database=db,
+                                         user=user_name,
+                                         password=pwd)
+    return connection
