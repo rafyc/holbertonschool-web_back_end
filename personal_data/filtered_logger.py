@@ -84,3 +84,27 @@ def get_db() -> MySQLConnection:
                                          user=user_name,
                                          password=pwd)
     return connection
+
+def main() -> None:
+    connection = get_db()
+    logger = get_logger()
+    cursor = connexion.cursor()
+    cursor.execute("SELECT * FROM users")
+    rows = cursor.fetchall()
+
+
+    for row in rows:
+        data = "name={}; email={}; phone={}; ssn={}; password={}; " \
+                  "ip={}; last_login={}; user_agent={};".format(row[0], row[1],
+                                                                row[2], row[3],
+                                                                row[4], row[5],
+                                                                row[6], row[7])
+        logger.info(data)
+    cursor.close()
+    connection.close()
+
+
+    if __name__ == "__main__":
+        '''Call main function
+        '''
+    main()
