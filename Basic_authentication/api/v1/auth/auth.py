@@ -12,14 +12,13 @@ class Auth:
     - current_user : return the user object
     '''
 
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Checks if path require authentication
         :param path: the route check
         :param excluded_paths: list of route
         :return: True or False if the route check require authentication
          """
-        return path
+        return False
 
     def authorization_header(self, request=None) -> str:
         """ Method return the value of the header request
