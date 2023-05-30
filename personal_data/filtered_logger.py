@@ -73,6 +73,8 @@ def get_logger() -> logging.Logger:
 
 
 def get_db() -> MySQLConnection:
+    """Get connexion to a database.
+    """
     user_name = os.environ.get('PERSONAL_DATA_DB_USERNAME', 'root')
     pwd = os.environ.get('PERSONAL_DATA_DB_PASSWORD', '')
     hst = os.environ.get('PERSONAL_DATA_DB_HOST', 'localhost')
