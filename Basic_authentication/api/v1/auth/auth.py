@@ -21,9 +21,12 @@ class Auth:
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
         new_path = path.rstrip('/')
-        if new_path in excluded_paths:
-            return False
-        return False
+        for excluded_path in excluded_paths:
+            check: List = excluded_path.split('*')
+            if path.startswith(check[0]) or path + '/' == excluded_path:
+                return False
+
+        return True
 
     def authorization_header(self, request=None) -> str:
         """ Method return the value of the header request
