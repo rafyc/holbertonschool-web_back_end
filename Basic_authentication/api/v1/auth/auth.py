@@ -4,10 +4,11 @@
 from flask import request
 from typing import List, TypeVar
 
+
 class Auth:
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-         """ Checks if path require authentication
+        """ Checks if path require authentication
         :param path: the route check
         :param excluded_paths: list of route
         :return: True or False if the route check require authentication
