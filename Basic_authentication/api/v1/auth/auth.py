@@ -6,6 +6,12 @@ from typing import List, TypeVar
 
 
 class Auth:
+    '''Class Auth defines the following methods:
+    - require_auth : return a boolean
+    - authorization_header : return the header
+    - current_user : return the user object
+    '''
+
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Checks if path require authentication
