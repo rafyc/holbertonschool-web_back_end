@@ -20,7 +20,6 @@ class Auth:
         """
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
-        new_path = path.rstrip('/')
         for excluded_path in excluded_paths:
             check: List = excluded_path.split('*')
             if path.startswith(check[0]) or path + '/' == excluded_path:
@@ -35,6 +34,7 @@ class Auth:
         """
         if request is None or 'Authorization' in response:
             return None
+        # return request.headers.get('Authorization', None)
         response = requests.get(request)
         headers = response.headers.get('Authorization')
         if headers is None:
