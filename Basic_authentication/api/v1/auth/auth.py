@@ -27,7 +27,6 @@ class Auth:
 
         return True
 
-
     def authorization_header(self, request=None) -> str:
         """ Method return the value of the header request
         :param request: the route requested
@@ -41,7 +40,6 @@ class Auth:
         if headers is None:
             return None
         return headers
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         '''The current user
