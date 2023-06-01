@@ -33,11 +33,11 @@ class Auth:
         :param request: the route requested
         :return: None or the header of the request
         """
-        if request is None or 'Authorization' in response
+        if request is None or 'Authorization' in response:
             return None
         response = requests.get(request)
         headers = response.headers.get('Authorization')
-        if headers is None
+        if headers is None:
             return None
         return headers
 
