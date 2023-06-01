@@ -3,6 +3,7 @@
 """
 from api.v1.auth.auth import Auth
 import uuid
+import os
 
 
 class SessionAuth(Auth):
@@ -11,7 +12,7 @@ class SessionAuth(Auth):
     pass
 
     user_id_by_session_id = {}
-    self.session_name = os.getenv('SESSION_NAME')
+    session_name = os.getenv('SESSION_NAME')
 
     def create_session(self, user_id: str = None) -> str:
         '''creates a Session ID for a user_id:
