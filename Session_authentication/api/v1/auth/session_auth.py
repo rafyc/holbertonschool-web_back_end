@@ -11,6 +11,7 @@ class SessionAuth(Auth):
     pass
 
     user_id_by_session_id = {}
+    self.session_name = os.getenv('SESSION_NAME')
 
     def create_session(self, user_id: str = None) -> str:
         '''creates a Session ID for a user_id:
@@ -27,3 +28,4 @@ class SessionAuth(Auth):
         if session_id is None or not isinstance(session_id, str):
             return None
         return self.user_id_by_session_id.get(session_id)
+
