@@ -69,7 +69,7 @@ class BasicAuth(Auth):
             return None
         try:
             users: List = User.search({"email": user_email})
-        except:
+        except Exception:
             return None
         for user in users:
             if user.is_valid_password(user_pwd):
