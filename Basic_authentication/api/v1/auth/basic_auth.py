@@ -3,7 +3,7 @@
 """
 
 class BasicAuth(Auth):
-    """
+    """Class BasicAuth that inherits from Auth.
     """
 
 
