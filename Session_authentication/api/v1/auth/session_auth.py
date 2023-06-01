@@ -26,6 +26,4 @@ class SessionAuth(Auth):
         '''
         if session_id is None or not isinstance(session_id, str):
             return None
-        for key in self.user_id_by_session_id:
-            if key == 'session_id':
-                return self.user_id_by_session_id.get(key)
+        return self.user_id_by_session_id.get('session_id')
