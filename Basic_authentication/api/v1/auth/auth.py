@@ -27,6 +27,7 @@ class Auth:
 
         return True
 
+
     def authorization_header(self, request=None) -> str:
         """ Method return the value of the header request
         :param request: the route requested
