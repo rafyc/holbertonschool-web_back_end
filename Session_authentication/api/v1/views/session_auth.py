@@ -11,15 +11,15 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
-   """ POST /api/v1/auth_session/login/
-    JSON body:
-      - email
-      - password
-      - last_name (optional)
-      - first_name (optional)
-    Return:
-      - User object JSON represented
-      - 400 if can't create the new session
+    """ POST /api/v1/auth_session/login/
+        JSON body:
+        - email
+        - password
+        - last_name (optional)
+        - first_name (optional)
+        Return:
+        - User object JSON represented
+        - 400 if can't create the new session
     """
     email = request.form.get(email)
     if email == '':
