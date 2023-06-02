@@ -11,6 +11,8 @@ from models.user import User
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
+    '''
+    '''
     email = request.form.get(email)
     if email == '':
         return jsonify({ "error": "email missing" }), 400
@@ -19,7 +21,7 @@ def login() -> str:
         return jsonify({ "error": "password missing" }), 400
 
     users = User.search(email)
-    if not users
+    if users is None
         return jsonify({ "error": "no user found for this email" }), 404
     for user in users:
         check: bool = user.is_valid_password(password)
