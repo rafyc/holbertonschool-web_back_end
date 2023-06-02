@@ -21,14 +21,14 @@ def login() -> str:
         - User object JSON represented
         - 400 if can't create the new session
     """
-    email = request.form.get(email)
+    email = request.form.get('email')
     if email == '':
         return jsonify({ "error": "email missing" }), 400
-    pswd = request.form.get(password)
+    pswd = request.form.get('password')
     if pswd == '':
         return jsonify({ "error": "password missing" }), 400
 
-    users = User.search(email)
+    users = User.search('email': email)
     if users is None:
         return jsonify({ "error": "no user found for this email" }), 404
     for user in users:
