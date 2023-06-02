@@ -39,6 +39,8 @@ class SessionAuth(Auth):
         return User.get(user_id)
 
     def destroy_session(self, request=None):
+        '''Destroy
+        '''
         if request is None:
             return False
 
