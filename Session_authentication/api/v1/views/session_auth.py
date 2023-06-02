@@ -6,31 +6,32 @@ from flask import jsonify, request, abort
 from typing import List
 from models.user import User
 from os import getenv
-from models.user import User
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
     """ POST /api/v1/auth_session/login/
-        JSON body:
-        - email
-        - password
-        - last_name (optional)
-        - first_name (optional)
-        Return:
-        - User object JSON represented
-        - 400 if can't create the new session
+    JSON body:
+      - email
+      - password
+      - last_name (optional)
+      - first_name (optional)
+    Return:
+      - User object JSON represented
+      - 400 if can't create the new session
     """
-    email = request.form.get('email')
-    if email == '':
-        return jsonify({ "error": "email missing" }), 400
-    pswd = request.form.get('password')
-    if pswd == '':
-        return jsonify({ "error": "password missing" }), 400
+    email: str = request.form.get('email')
+    if email == "" or not email:
+        return jsonify({"error": "email missing"}), 400
 
-    users = User.search(email)
-    if users is None:
-        return jsonify({ "error": "no user found for this email" }), 404
+    password: str = request.form.get('password')
+    if password == "" or not password:
+        return jsonify({"error": "password missing"}), 400
+
+    users: List = User.search({'email': email})
+    if not users:
+        return jsonify({"error": "no user found for this email"}), 404
+
     for user in users:
         check: bool = user.is_valid_password(password)
         if not check:
@@ -46,3 +47,21 @@ def login() -> str:
     response.set_cookie(cookie_name, session_id)
 
     return response
+
+
+@app_views.route('/auth_session/logout',
+                 methods=['DELETE'],
+                 strict_slashes=False)
+def logout() -> str:
+    """ DELETE /api/v1/auth_session/logout/
+    Return:
+      - empty JSON is the Session has been correctly deleted
+      - 404 if session doesn't exist
+    """
+    from api.v1.app import auth
+
+    exist_session = auth.destroy_session(request)
+    if not exist_session:
+        abort(404)
+
+    return jsonify({}), 200
