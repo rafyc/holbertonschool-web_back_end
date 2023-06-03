@@ -55,12 +55,12 @@ class DB:
         ''' takes as argument a required user_id integer
         and arbitrary keyword arguments, and update
         '''
-            user = self.find_user_by(id=user_id)
-            for keys, values in kwargs.items():
-                if hasattr(user, key):
-                    setattr(user, key, value)
-                else:
-                    raise ValueError
-            self._session.add(user)
-            self._session.commit()
-            return None
+        user = self.find_user_by(id=user_id)
+        for key, value in kwargs.items():
+            if hasattr(user, key):
+                setattr(user, key, value)
+            else:
+                raise ValueError
+        self._session.add(user)
+        self._session.commit()
+        return None
