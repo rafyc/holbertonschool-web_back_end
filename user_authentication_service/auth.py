@@ -20,7 +20,7 @@ def _hash_password(password: str) -> bytes:
         pass
 
 
-def _generate_uuid(self) -> str:
+def _generate_uuid() -> str:
     '''generate uuid
     '''
     return str(uuid4())
