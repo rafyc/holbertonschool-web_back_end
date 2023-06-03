@@ -52,12 +52,15 @@ class DB:
         return res
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        try:
+        ''' takes as argument a required user_id integer
+        and arbitrary keyword arguments, and update
+        '''
             user = self.find_user_by(id=user_id)
             for keys, values in kwargs.items():
-                setattr(user, keys, values)
+                if hasattr(user, key):
+                    setattr(user, key, value)
+                else:
+                    raise ValueError
             self._session.add(user)
             self._session.commit()
             return None
-        except ValueError:
-            pass
