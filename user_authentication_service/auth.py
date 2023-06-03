@@ -19,6 +19,7 @@ def _hash_password(password: str) -> bytes:
     else:
         pass
 
+
 def _generate_uuid() -> str:
     '''generate uuid
     '''
@@ -50,5 +51,3 @@ class Auth:
                                   user.hashed_password)
         except NoResultFound:
             return False
-
-
