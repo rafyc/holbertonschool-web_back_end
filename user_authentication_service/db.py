@@ -49,5 +49,15 @@ class DB:
             raise InvalidRequestError
         if res is None:
             raise NoResultFound
-
         return res
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        try:
+            user = self.find_user_by(id=user_id)
+            for keys, values in kwargs.items():
+                setattr(user, keys, values)
+            self._session.add(user)
+            self._session.commit()
+            return None
+        except ValueError:
+            pass
