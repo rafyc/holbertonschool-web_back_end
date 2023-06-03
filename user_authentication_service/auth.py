@@ -46,6 +46,6 @@ class Auth:
             return False
 
     def _generate_uuid():
-    '''generate uuid
-    '''
+        '''generate uuid
+        '''
         return str(uuid4())
