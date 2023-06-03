@@ -30,19 +30,21 @@ def users():
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
-def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
+def login() -> str:
+    ''' POST on session
+    '''
+    email: str = request.form.get('email')
+    password: str = request.form.get('password')
     if not email or not password:
-        abort(401)
+        return abort(401)
 
-    check = AUTH.valid_login(email=email, password=password)
+    check: bool = AUTH.valid_login(email=email, password=password)
     if not check:
         abort(401)
 
-    session_id = AUTH.create_session(email=email)
+    session_id: str = AUTH.create_session(email=email)
     res = jsonify(email=email, message='logged in')
-    res.set_cookie('session_id', res)
+    res.set_cookie('session_id', session_id)
     return res
 
 
