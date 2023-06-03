@@ -51,3 +51,17 @@ class Auth:
                                   user.hashed_password)
         except NoResultFound:
             return False
+
+    def create_session(self, email: str) -> str:
+        '''method. It takes an email string argument and returns the
+        session ID as a string. The method should find the user corresponding
+        to the email, generate a new UUID and store it in the database
+        '''
+        try:
+            user = self._db.find_user_by(email=email)
+            id = _generate_uuid()
+            user.session_id = id
+            self._db.update_user(user_id=user.id, email=email)
+            return id
+        except NoResultFound:
+            return None
