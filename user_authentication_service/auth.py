@@ -78,7 +78,7 @@ class Auth:
             return None
 
     def destroy_session(self, user_id):
-        '''
+        '''method takes a single user_id integer argument and returns None.
         '''
         try:
             self._db.update_user(user_id, session_id=None)

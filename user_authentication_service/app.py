@@ -47,6 +47,19 @@ def login() -> str:
     res.set_cookie('session_id', session_id)
     return res
 
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def logout():
+    '''Find the user with the requested session ID.
+    If the user exists destroy the session and redirect the user to GET
+    '''
+    id = request.get_cookie('session_id')
+    user = AUTH.get_user_from_session_id(session_id=id)
+    if user is None:
+        abort(403)
+    else:
+        destroy_session(user_id=user.id)
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
