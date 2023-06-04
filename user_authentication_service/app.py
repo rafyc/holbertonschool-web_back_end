@@ -2,7 +2,7 @@
 '''
 '''
 
-from flask import Flask, jsonify, redirect, request, abort, make_response
+from flask import Flask, jsonify, redirect, request, abort
 from auth import Auth
 
 
@@ -46,6 +46,7 @@ def login() -> str:
     res.set_cookie('session_id', session_id)
     return res
 
+
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
     '''Find the user with the requested session ID.
@@ -59,7 +60,7 @@ def logout():
         user = AUTH.get_user_from_session_id(id)
         AUTH.destroy_session(user_id=user.id)
         return redirect("/", 302)
-    except Exception:
+    except NoResultFound:
         abort(403)
 
 
