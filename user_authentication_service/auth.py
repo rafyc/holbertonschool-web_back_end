@@ -98,13 +98,12 @@ class Auth:
             raise ValueError
 
     def update_password(self, reset_token: str, password: str) -> None:
-        """ Update password
-        """
+        '''Update password
+        '''
         try:
             user: User = self._db.find_user_by(reset_token=reset_token)
-            hash_pwd: str = _hash_password(password).decode()
+            psw: str = _hash_password(password).decode()
             self._db.update_user(user.id,
-                                 hashed_password=hash_pwd,
-                                 reset_token=None)
+                                 hashed_password=psw, reset_token=None)
         except Exception:
             raise ValueError
