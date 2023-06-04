@@ -1,0 +1,17 @@
+@app.route('/sessions', methods=['POST'], strict_slashes=False)
+def login() -> str:
+    ''' POST on session
+    '''
+    email: str = request.form.get('email')
+    password: str = request.form.get('password')
+    if not email or not password:
+        return abort(401)
+
+    check: bool = AUTH.valid_login(email=email, password=password)
+    if not check:
+        abort(401)
+
+    session_id: str = AUTH.create_session(email=email)
+    res = jsonify(email=email, message='logged in')
+    res.set_cookie('session_id', session_id)
+    return res
