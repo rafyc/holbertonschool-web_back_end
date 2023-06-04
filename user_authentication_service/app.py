@@ -57,10 +57,10 @@ def logout():
         abort(403)
 
     try:
-        user = AUTH.get_user_from_session_id(session_id=id)
+        user = AUTH.get_user_from_session_id(id)
         AUTH.destroy_session(user_id=user.id)
-        return redirect("/", code=302)
-    except NoResultFound:
+        return make_response(redirect("/", 302))
+    except Exception:
         abort(403)
 
 
