@@ -101,10 +101,9 @@ class Auth:
         '''
         '''
         try:
-        user =  self._db.find_user_by(reset_token=reset_token)
-        pswd = _hash_password(password=password)
-        self._db.update_user(user.id, hashed_password=pswd reset_token=None)
-
+            user = self._db.find_user_by(reset_token=reset_token)
+            pswd = _hash_password(password=password)
+            self._db.update_user(user.id, hashed_password=pswd
+                                 reset_token=None)
         except ValueError:
             return None
-
