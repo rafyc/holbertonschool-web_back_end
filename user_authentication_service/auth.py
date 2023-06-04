@@ -34,14 +34,14 @@ class Auth:
         self._db = DB()
 
     def register_user(self, email: str, password: str) -> User:
-        '''
+        '''Register a user
         '''
         try:
             user = self._db.find_user_by(email=email)
             raise ValueError("User {} already exists".format(user.email))
         except NoResultFound:
-            pswd = _hash_password(password=password)
-            new_user = self._db.add_user(email, pswd)
+            pswd: str = _hash_password(password)
+            new_user: User = self._db.add_user(email, pswd)
             return new_user
 
     def valid_login(self, email: str, password: str) -> bool:
@@ -106,9 +106,7 @@ class Auth:
         '''
         try:
             user: User = self._db.find_user_by(reset_token=reset_token)
-            psw: str = _hash_password(password).decode()
-            self._db.update_user(user.id,
-                                 hashed_password=psw,
-                                 reset_token=None)
+            psw: str = _hash_password(password)
+            self._db.update_user(user.id, hashed_password=psw, reset_token=None)
         except Exception:
             raise ValueError
