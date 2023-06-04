@@ -52,7 +52,7 @@ def logout():
     If the user exists destroy the session and redirect the user to GET
     '''
     id = request.cookies.get('session_id')
-    if not id:
+    if id is None:
         abort(403)
 
     try:
