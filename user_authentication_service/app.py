@@ -59,7 +59,7 @@ def logout():
     try:
         user = AUTH.get_user_from_session_id(session_id=id)
         AUTH.destroy_session(user_id=user.id)
-        return make_response(redirect("/", 302))
+        return redirect("/", code=302)
     except NoResultFound:
         abort(403)
 
