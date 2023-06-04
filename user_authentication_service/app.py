@@ -53,12 +53,15 @@ def logout():
     If the user exists destroy the session and redirect the user to GET
     '''
     id = request.get_cookie('session_id')
-    user = AUTH.get_user_from_session_id(session_id=id)
-    if user is None:
+    if id is None:
         abort(403)
-    else:
-        destroy_session(user_id=user.id)
 
+    try:
+        user = AUTH.get_user_from_session_id(session_id=id)
+        AUTH.destroy_session(user_id=user.id)
+        return make_response(redirect("/", 302))
+    except NoResultFound:
+        abort(403)
 
 
 if __name__ == "__main__":
