@@ -51,7 +51,7 @@ def logout():
     '''Find the user with the requested session ID.
     If the user exists destroy the session and redirect the user to GET
     '''
-    id = request.cookie.get('session_id')
+    id = request.cookies.get('session_id')
     if not id:
         abort(403)
 
