@@ -46,19 +46,21 @@ def login() -> str:
     res.set_cookie('session_id', session_id)
     return res
 
-@app.route("/sessions", methods=['DELETE'], strict_slashes=False)
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
-    """ DELETE /sessions """
-    session_id = request.cookies.get("session_id")
-    if not session_id:
+    '''Find the user with the requested session ID.
+    If the user exists destroy the session and redirect the user to GET
+    '''
+    id = request.cookie.get('session_id')
+    if not id:
         abort(403)
 
     try:
-        user = AUTH.get_user_from_session_id(session_id)
+        user = AUTH.get_user_from_session_id(id)
         AUTH.destroy_session(user_id=user.id)
         return make_response(redirect("/", 302))
     except Exception:
-        return abort(403)
+        abort(403)
 
 
 if __name__ == "__main__":
