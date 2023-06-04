@@ -95,7 +95,7 @@ class Auth:
             return None
         try:
             user: User = self._db.find_user_by(email=email)
-            id: str= _generate_uuid()
+            id: str = _generate_uuid()
             self._db.update_user(user.id, reset_token=id)
             return id
         except Exception:
