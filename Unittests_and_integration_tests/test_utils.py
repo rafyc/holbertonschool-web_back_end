@@ -7,7 +7,7 @@ from utils import access_nested_map
 from typing import Mapping, Sequence, Any
 
 
-class TestAccessNestedMap(unittest.TestCase)
+class TestAccessNestedMap(unittest.TestCase):
     '''
     '''
     test_cases = [
