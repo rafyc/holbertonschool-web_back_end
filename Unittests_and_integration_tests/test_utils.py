@@ -16,7 +16,7 @@ class TestAccessNestedMap(unittest.TestCase):
     {"nested_map": {"a": {"b": 2}}, "path": ("a", "b"), "except_rez": 2}
     ]
 
-    @parameterized.parameterized.expand(test_cases)
+    @parameterized.expand(test_cases)
 
     def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence,
