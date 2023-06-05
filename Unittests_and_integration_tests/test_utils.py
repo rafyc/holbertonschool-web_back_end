@@ -11,11 +11,14 @@ from typing import Mapping, Sequence, Any
 class TestAccessNestedMap(TestCase):
     '''
     '''
-    @parameterized.expand([
-        ({"a": 1}, ("a",)),
-        ({"a": {"b": 2}}, ("a",)),
-        ({"a": {"b": 2}}, ("a", "b"))
-    ])
+    test_cases = [
+    {"nested_map": {"a": 1}, "path": ("a",)},
+    {"nested_map": {"a": {"b": 2}}, "path": ("a",)},
+    {"nested_map": {"a": {"b": 2}}, "path": ("a", "b")}
+    ]
+
+    @parameterized.parameterized.expand(test_cases)
+
     def test_access_nested_map(nested_map: Mapping,
                                path: Sequence,
                                except_rez: Any) -> None:
