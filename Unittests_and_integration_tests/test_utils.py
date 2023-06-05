@@ -8,7 +8,7 @@ from typing import Mapping, Sequence, Any
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    '''
+    '''utils module
     '''
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -29,5 +29,5 @@ class TestAccessNestedMap(unittest.TestCase):
     ])
     def test_access_nested_map_exception(self, nested_map: Mapping,
                                path: Sequence,) -> None:
-        with self.assertRaises(KeyError)
+        with self.assertRaises(KeyError):
             access_nested_map(nested_map=nested_map, path=path)
