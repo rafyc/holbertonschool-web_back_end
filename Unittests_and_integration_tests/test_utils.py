@@ -12,7 +12,7 @@ class TestAccessNestedMap(TestCase):
     '''
     '''
     @parameterized.expand([
-        ({"a": 1},("a",)),
+        ({"a": 1}, ("a",)),
         ({"a": {"b": 2}}, ("a",)),
         ({"a": {"b": 2}}, ("a", "b"))
     ])
