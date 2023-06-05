@@ -2,13 +2,12 @@
 """ Test
 """
 import unittest
-from unittest import TestCase
 from parameterized import parameterized
 from utils import access_nested_map
 from typing import Mapping, Sequence, Any
 
 
-class TestAccessNestedMap(TestCase):
+class TestAccessNestedMap(unittest.TestCase)
     '''
     '''
     test_cases = [
@@ -19,9 +18,9 @@ class TestAccessNestedMap(TestCase):
 
     @parameterized.parameterized.expand(test_cases)
 
-    def test_access_nested_map(nested_map: Mapping,
+    def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence,
-                               except_rez: Any) -> None:
+                               expected_rez: Any) -> None:
 
         rez = access_nested_map(nested_map=nested_map, path=path)
-        self.assertEqual(rez, except_rez)
+        self.assertEqual(rez, expected_rez)
