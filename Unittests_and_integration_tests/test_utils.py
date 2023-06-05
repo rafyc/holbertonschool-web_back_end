@@ -11,9 +11,9 @@ class TestAccessNestedMap(unittest.TestCase)
     '''
     '''
     test_cases = [
-    {"nested_map": {"a": 1}, "path": ("a",)},
-    {"nested_map": {"a": {"b": 2}}, "path": ("a",)},
-    {"nested_map": {"a": {"b": 2}}, "path": ("a", "b")}
+    {"nested_map": {"a": 1}, "path": ("a",), "except_rez": 1},
+    {"nested_map": {"a": {"b": 2}}, "path": ("a",), "except_rez": {"b": 2}},
+    {"nested_map": {"a": {"b": 2}}, "path": ("a", "b"), "except_rez": 2}
     ]
 
     @parameterized.parameterized.expand(test_cases)
