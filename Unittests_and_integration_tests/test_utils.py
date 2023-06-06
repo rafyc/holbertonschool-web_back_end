@@ -5,7 +5,7 @@ import unittest
 from parameterized import parameterized
 from utils import access_nested_map, get_json
 from typing import Mapping, Sequence, Any
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -48,4 +48,4 @@ class TestGetJson(unittest.TestCase):
 
         rez = get_json(url = test_url)
 
-        self.assertEqual(payload, expected_payload)
+        self.assertEqual(rez, expected_payload)
