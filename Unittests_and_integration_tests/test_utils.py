@@ -3,7 +3,7 @@
 """
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from typing import Mapping, Sequence, Any
 from unittest.mock import patch, Mock
 
@@ -49,3 +49,29 @@ class TestGetJson(unittest.TestCase):
         rez = get_json(url = test_url)
 
         self.assertEqual(rez, expected_payload)
+
+class TestMemoize(unittest.TestCase):
+    '''
+    '''
+    def test_memoize(self):
+
+        class TestClass:
+
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        test_instance = TestClass()
+        with patch.object(TestClass, 'a_method') as mock_meth:
+            mock_meth.return_value = 42
+            rez1 = test_instance.a_property
+            rez2 = test_instance.a_property
+
+            mock_meth.assert_called_once()
+
+            # Assert that the results are the same
+            self.assertEqual(rez1, rez2)
+            self.assertEqual(rez1, 42)
