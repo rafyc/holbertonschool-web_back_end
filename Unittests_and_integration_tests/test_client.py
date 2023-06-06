@@ -19,8 +19,8 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_org(self, ORG_URL: str, mock_get):
         '''
         '''
-        expected_result = {}
+        mock_get.return_value = {}
 
-        mock_get.return_value = expected_result
-        client = GithubOrgClient(org_name=ORG_URL).org
+        rez = GithubOrgClient(org_name=ORG_URL).org
+        self.assertEqual(rez, mock_get.return_value)
         mock_get.assert_called_once()
