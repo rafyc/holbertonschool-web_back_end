@@ -19,6 +19,8 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence,
                                except_rez: Any) -> None:
+    '''
+    '''
 
         rez = access_nested_map(nested_map=nested_map, path=path)
         self.assertEqual(rez, except_rez)
@@ -56,14 +58,20 @@ class TestMemoize(unittest.TestCase):
     '''
     '''
     def test_memoize(self):
-
+    '''
+    '''
         class TestClass:
-
+        '''
+        '''
             def a_method(self):
+            '''
+            '''
                 return 42
 
             @memoize
             def a_property(self):
+            '''
+            '''
                 return self.a_method()
 
         test_instance = TestClass()
