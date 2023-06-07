@@ -51,3 +51,12 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assertEqual(rez, ['Google'])
             mock_get.assert_called_once()
             mock_public_repos.assert_called_once()
+
+    @parameterized([
+            ({"license": {"key": "my_license"}}),
+            ({"license": {"key": "other_license"}})
+        ])
+    def test_has_license(self):
+        '''
+        '''
+

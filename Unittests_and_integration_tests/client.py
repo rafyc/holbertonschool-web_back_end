@@ -48,11 +48,9 @@ class GithubOrgClient:
         return public_repos
 
     @staticmethod
-    def has_license(repo: Dict[str, Dict], license_key: str) -> bool:
-        """Static: has_license"""
-        assert license_key is not None, "license_key cannot be None"
-        try:
-            has_license = access_nested_map(repo, ("license", "key")) == license_key
-        except KeyError:
-            return False
-        return has_license
+    def test_has_license(self, repo: Dict[str, Dict],
+                         license_key: str, expected_value) -> None:
+        """ Test has_license method """
+        result = GithubOrgClient.has_license(repo=repo,
+                                             license_key=license_key)
+        self.assertEqual(result, expected_value)
