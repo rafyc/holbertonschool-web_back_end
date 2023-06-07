@@ -5,7 +5,7 @@ import unittest
 from parameterized import parameterized
 from client import GithubOrgClient
 from typing import Mapping, Sequence, Any
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, PropertyMock
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -24,3 +24,15 @@ class TestGithubOrgClient(unittest.TestCase):
         rez = GithubOrgClient(org_name=ORG_URL).org
         self.assertEqual(rez, mock_get.return_value)
         mock_get.assert_called_once()
+
+    def test_public_repos_url(self):
+        '''
+        '''
+        mock_obj = 'client.GithubOrgClient.org'
+        mock_value = {'https://api.github.com/orgs/google'}
+
+        with patch(mock_obj,
+                   new_callable=PropertyMock,
+                   return_value=mock_value) as mock_repos_url:
+            result = GithubOrgClient("Google").org
+            self.assertEqual(result, mock_repos_url.return_value)
