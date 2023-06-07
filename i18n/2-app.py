@@ -14,10 +14,11 @@ def index():
     return render_template('2-index.html')
 
 
+@babel.localeselector
 def get_locale():
     '''
     '''
-    return request.accept_languages.best_match(LANGUAGES)
+    return request.accept_languages.best_match('LANGUAGES')
 
 
 class Config:
