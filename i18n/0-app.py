@@ -9,7 +9,4 @@ app = Flask(__name__)
 def index():
     '''Generate template
     '''
-    return render_template('index.html')
-
-if __name__ == '__main__':
-    app.run()
+    return render_template('0-index.html')
