@@ -12,12 +12,3 @@ def index():
     '''Generate template
     '''
     return render_template('0-index.html')
-
-babel = Babel(app)
-
-class Config:
-    LANGUAGES = ['en', 'fr']
-    BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
-
-app.config.from_object(Config)
