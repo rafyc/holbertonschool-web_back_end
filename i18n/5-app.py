@@ -46,9 +46,10 @@ def get_user():
         return None
 
 
-
 @app.before_request
 def before_request():
+    '''
+    '''
     user = get_user()
     if user:
         g.user = user
