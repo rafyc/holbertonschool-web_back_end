@@ -38,12 +38,13 @@ def get_locale():
 def get_user():
     '''
     '''
-    user_nb = int(request.args.get('login_as'))
-    if user_nb in users.keys() and user_nb is not None:
-        return users[user_nb]
-    else:
-        print("User not found")
+    try:
+        user_nb = int(request.args.get('login_as'))
+        if user_nb in users.keys() and user_nb is not None:
+            return users[user_nb]
+    except Exception:
         return None
+
 
 
 @app.before_request
@@ -57,12 +58,12 @@ def before_request():
 def index():
     '''Generate template
     '''
-    if g.user['name'] is not None:
+    try:
         username = g.user['name']
-    else:
+    except Exception:
         username = None
     return render_template('5-index.html', username=username)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5000")
+    app.run(host="0.0.0.0", port="8001")
