@@ -13,6 +13,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 class Config:
     '''Configuration module
     '''
@@ -22,7 +23,6 @@ class Config:
 
 
 app.config.from_object(Config)
-
 
 
 @babel.localeselector
@@ -45,11 +45,13 @@ def get_user():
         print("User not found")
         return None
 
+
 @app.before_request
 def before_request():
     user = get_user()
     if user:
         g.user = user
+
 
 @app.route('/')
 def index():
@@ -60,6 +62,7 @@ def index():
     else:
         username = None
     return render_template('5-index.html', username=username)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8001")
