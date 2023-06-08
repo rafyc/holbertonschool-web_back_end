@@ -25,12 +25,13 @@ def index():
     '''
     return render_template('2-index.html')
 
+
 @babel.localeselector
 def get_locale():
     '''
     '''
     return request.accept_languages.best_match('LANGUAGES')
-# babel.init_app(app, locale_selector=get_locale)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8001")
