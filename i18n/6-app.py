@@ -32,9 +32,10 @@ def get_locale():
     locale = request.args.get('locale')
     if locale in Config.LANGUAGES:
         return locale
-    if user:
-        user = get_user()
-        return user.get('locale')
+    user = get_user()
+    locale = user.get('locale')
+    if locale in Config.LANGUAGES:
+        return locale
     return request.accept_languages.best_match('LANGUAGES')
 
 
