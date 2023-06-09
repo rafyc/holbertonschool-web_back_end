@@ -72,5 +72,19 @@ def index():
     return render_template('6-index.html', username=username)
 
 
+@babel.timezoneselector
+def get_timezone():
+    '''
+    '''
+    try:
+        url_timezone = request.args.get('timezone')
+        return url_timezone
+        user_timezone = g.user.get('timezone')
+        return user_timezone
+    except Exception:
+        pass
+    return BABEL_DEFAULT_TIMEZONE
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="8001")
