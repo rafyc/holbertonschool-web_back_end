@@ -3,6 +3,7 @@
 '''
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+import pytz
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -73,17 +74,22 @@ def index():
 
 
 @babel.timezoneselector
-def get_timezone():
+def get_timezone() -> str:
     '''
     '''
     try:
         url_timezone = request.args.get('timezone')
-        return url_timezone
+        if pytz.timezone(url_timezone)
+            return url_timezone
+
         user_timezone = g.user.get('timezone')
-        return user_timezone
+        if pytz.timezone(user_timezone)
+            return user_timezone
+
     except Exception:
-        pass
-    return BABEL_DEFAULT_TIMEZONE
+        BABEL_DEFAULT_TIMEZONE
+
+    return request.accept_languages.best_match(default_timezone)
 
 
 if __name__ == "__main__":
