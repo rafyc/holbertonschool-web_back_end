@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 '''Main app
 '''
+import datetime
+import locale
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 import pytz
@@ -80,16 +82,31 @@ def get_timezone() -> str:
 
     return request.accept_languages.best_match(default_timezone)
 
-
 @app.route('/')
 def index():
     '''Generate template
     '''
     try:
         username = g.user['name']
+        print(username)
+        timezone = get_timezone()
+        date = datetime.datetime.now(pytz.timezone(timezone))
+
+        if get_locale() == 'en':
+            locale.setlocale(locale.LC_TIME, "en_US.UTF-8")
+            format_str = '%b %d, %Y, %I:%M:%S %p'
+            current_time = date.strftime(format_str)
+
+        if get_locale() == 'fr':
+            locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+            format_str = '%d %b %Y à %H:%M:%S'
+
     except Exception:
         username = None
-    return render_template('6-index.html', username=username)
+        current_time = None
+
+    print(username)
+    return render_template('index.html', username=username, current_time=current_time)
 
 
 if __name__ == "__main__":
