@@ -26,6 +26,7 @@ class Cache:
         return res
 
     def get_str(self, key: str) -> str:
+        return self.get(key, fn=lambda d: d.decode("utf-8"))
 
     def get_int(self, key: str) -> int:
         return self.get(key, fn=int)
