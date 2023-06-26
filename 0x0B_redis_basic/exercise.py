@@ -10,11 +10,11 @@ from functools import wraps
 def count_calls(method: Callable) -> Callable:
     key = method.__qualname__
 
-@wraps(method)
-def wrapper(self, *args):
-    self._redis.incr(key)
-    return method(self, *args)
-return wrapper
+    @wraps(method)
+    def wrapper(self, *args):
+        self._redis.incr(key)
+        return method(self, *args)
+    return wrapper
 
 class Cache:
     def __init__(self):
