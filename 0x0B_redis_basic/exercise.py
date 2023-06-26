@@ -22,6 +22,7 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args) -> Any:
 
 def replay():
+    zip("", "".lrange(""))
 
 class Cache:
     def __init__(self):
