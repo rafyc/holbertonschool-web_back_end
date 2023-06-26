@@ -17,6 +17,9 @@ def count_calls(method: Callable) -> Callable:
     return wrapper
 
 def call_history(method: Callable) -> Callable:
+    key = method.__qualname__
+    @wraps(method)
+    def wrapper(self, *args) -> Any:
 
 class Cache:
     def __init__(self):
@@ -24,6 +27,7 @@ class Cache:
         self._redis.flushdb()
 
     @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
