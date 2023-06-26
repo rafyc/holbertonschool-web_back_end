@@ -21,6 +21,8 @@ def call_history(method: Callable) -> Callable:
     @wraps(method)
     def wrapper(self, *args) -> Any:
 
+def replay():
+
 class Cache:
     def __init__(self):
         self._redis = redis.Redis()
