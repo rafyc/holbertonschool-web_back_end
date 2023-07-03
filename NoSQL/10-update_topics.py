@@ -4,6 +4,8 @@ from pymongo import MongoClient
 
 
 def update_topics(mongo_collection, name, topics):
-    """ inserts a new document in a collection based on kwargs """
-    documents = mongo_collection.update(name, topics)
+    """ Change school topics """
+    query = "name": name
+    update = $set:{"topics":topics}
+    documents = mongo_collection.update(query, update)
     return documents
