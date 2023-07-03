@@ -5,5 +5,5 @@ from pymongo import MongoClient
 
 def insert_school(mongo_collection, **kwargs):
     """ inserts a new document in a collection based on kwargs """
-    documents = mongo_collection.document.insert(kwargs)
+    documents = mongo_collection.insert(kwargs)
     return documents
