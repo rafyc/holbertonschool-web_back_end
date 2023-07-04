@@ -1,3 +1,4 @@
+-- script that creates a table users
 CREATE TABLE user IF NOT EXISTS (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY(id),
     email CHAR(255) NOT NULL UNIQUE,
