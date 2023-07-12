@@ -3,8 +3,8 @@ function signUpUser(firstName, lastName) {
     resolve({
       firstName,
       lastName,
-    })
-  })
+    });
+  });
 }
 
 export default signUpUser;
