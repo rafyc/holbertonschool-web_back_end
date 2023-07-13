@@ -7,4 +7,5 @@ export default function divideFunction(numerator, denominator) {
   } catch (e) {
     console.log(e);
   }
+  return undefined
 }
