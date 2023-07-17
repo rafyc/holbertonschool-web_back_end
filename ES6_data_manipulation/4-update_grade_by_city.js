@@ -2,8 +2,12 @@ const updateStudentGradeByCity = (students, city, newGrades) => {
   if (!newGrades.grade) {
     newGrades.grade = 'N/A'
   }
-  const filteredStudent = students.filter(item => item.location === city);
-  return filteredStudent.map(item => item.grade = newGrades)
+  return students
+    .filter((item) => item.location === city)
+    .map((item) => {
+      const obj = newGrades.find(grade => grade.studentId === item.id)
+      return { ...item, grade: obj ? obj.grade : 'N/A' }
+    })
 };
 
 export default updateStudentGradeByCity;
