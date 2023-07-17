@@ -1,13 +1,10 @@
 const updateStudentGradeByCity = (students, city, newGrades) => {
-  if (!newGrades.grade) {
-    newGrades.grade = 'N/A'
-  }
   return students
     .filter((item) => item.location === city)
     .map((item) => {
       const obj = newGrades.find(grade => grade.studentId === item.id)
-      return { ...item, grade: obj ? obj.grade : 'N/A' }
-    })
+      return { ...item, grade: obj ? obj.grade : 'N/A' };
+    });
 };
 
 export default updateStudentGradeByCity;
