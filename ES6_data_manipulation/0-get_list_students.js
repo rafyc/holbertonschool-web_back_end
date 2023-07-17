@@ -1,27 +1,10 @@
 const getListStudents = () => {
 
-  const students = []
-
-  const student = {}
-  student.id = 1
-  student.firstName = "Guillaume"
-  student.location = "San Francisco"
-  students.push(student)
-
-  const student1 = {}
-  student1.id = 2
-  student1.firstName = "James"
-  student1.location = "Columbia"
-  students.push(student1)
-
-  const student2 = {}
-  student2.id = 2
-  student2.firstName = "Serena"
-  student2.location = "San Francisco"
-  students.push(student2)
-
-  return students;
-
+  return [
+    { id: 1, firstName: 'Guillaume', location: 'San Francisco' },
+    { id: 2, firstName: 'James', location: 'Columbia' },
+    { id: 5, firstName: 'Serena', location: 'San Francisco' },
+  ];
 }
 
 export default getListStudents;
