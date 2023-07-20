@@ -7,7 +7,7 @@ const countStudents = (path) => {
     const removeHeader = data.split('\n');
     removeHeader.shift();
     const cleanArr = removeHeader.filter((e) => e);
-    for (let i = 0; i <= cleanArr.length; i++) {
+    for (let i = 0; i <= cleanArr.length; i += 1) {
       num = i;
     }
 
@@ -17,7 +17,7 @@ const countStudents = (path) => {
 
     const spe = ['CS', 'SWE'];
 
-    spe.forEach(el => {
+    spe.forEach((el) => {
       const studentsWithField = all.filter((e) => e[3] === el);
       const names = studentsWithField.map((e) => e[0]).join(', ');
       console.log(`Number of students in ${el}: ${all.filter((e) => e[3] === el).length}. List: ${names}`);
