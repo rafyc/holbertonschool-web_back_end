@@ -19,7 +19,7 @@ const countStudents = (path) => {
     spe.forEach(el => {
       const studentsWithField = all.filter((e) => e[3] === el);
       const names = studentsWithField.map((e) => e[0]).join(', ');
-      console.log(`Number of students in ${el}: ${all.filter((e) => e[3] == el).length} List: ${names}`);
+      console.log(`Number of students in ${el}: ${all.filter((e) => e[3] == el).length}. List: ${names}`);
     });
 
   } catch (e) {
