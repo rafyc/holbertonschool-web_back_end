@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 const countStudents = (path) => {
-  console.log("After!");
   try {
     const data = fs.readFileSync(path, { encoding: 'utf8', flag: 'r' });
 
@@ -22,7 +21,6 @@ const countStudents = (path) => {
       const names = studentsWithField.map((e) => e[0]).join(', ');
       console.log(`Number of students in ${el}: ${all.filter((e) => e[3] == el).length} List: ${names}`);
     });
-    console.log("Done!");
 
   } catch (e) {
     throw new Error('Cannot load the database');
