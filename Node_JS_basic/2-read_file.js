@@ -4,15 +4,16 @@ const countStudents = (path) => {
   try {
     const data = fs.readFileSync(path, { encoding: 'utf8', flag: 'r' });
 
-    const remove_header = data.split('\n');
-    remove_header.shift();
-    const clean_arr = remove_header.filter((e) => e);
-    for (let i = 0; i <= clean_arr.length; i++)
-      num = i;
+    const removeHeader = data.split('\n');
+    removeHeader.shift();
+    const cleanArr = removeHeader.filter((e) => e);
+    for (let i = 0; i <= cleanArr.length; i += i) {
+      let num = i;
+    }
 
     console.log(`Number of students: ${num}`);
 
-    const all = clean_arr.map((el) => el.split(','));
+    const all = cleanArr.map((el) => el.split(','));
 
     const spe = ['CS', 'SWE'];
 
