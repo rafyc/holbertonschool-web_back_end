@@ -1,13 +1,9 @@
-const http = require('http');
+const http = require('node:http');
 
-const hostname = '127.0.0.1';
-const port = 1245;
-
-const app = http.createServer((request, response) => {
-  response.statusCode = 200;
-  response.setHeader('Content-Type', 'text/plain');
-  response.end('Hello Holberton School!');
+// Create a local server to receive data from
+const app = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end('Hello Holberton School!');
 });
 
-app.listen(port, hostname);
-module.exports = app;
+app.listen(1245);
