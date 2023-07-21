@@ -6,6 +6,4 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app elistening on port ${port}`)
-})
+app.listen(port)
