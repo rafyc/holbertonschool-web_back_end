@@ -12,12 +12,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
+  res.write(`This is the list of our students \n`)
   countStudents(db)
     .then((data) => {
-      res.send(`This is the list of our students \n${data.join('\n')}`);
+      res.end(`${data.join('\n')}`);
     })
     .catch((err) => {
-      res.send(`${err.message}`);
+      res.end(`${err.message}`);
     });
 });
 
