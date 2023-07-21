@@ -2,7 +2,7 @@ const fs = require('fs/promises');
 
 const countStudents = async (path) => {
   try {
-    const data = await fs.readFile(path, { encoding: 'utf8', flag: 'r' });
+    const data = await fs.readFile(path, { encoding: 'utf8' });
 
     const removeHeader = data.split('\n');
     removeHeader.shift();
