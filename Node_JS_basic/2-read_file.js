@@ -7,7 +7,7 @@ const countStudents = (path) => {
     const removeHeader = data.split('\n');
     removeHeader.shift();
     const cleanArr = removeHeader.filter((e) => e);
-    let num = cleanArr.length
+    const num = cleanArr.length;
     console.log(`Number of students: ${num}`);
 
     const all = cleanArr.map((el) => el.split(','));
