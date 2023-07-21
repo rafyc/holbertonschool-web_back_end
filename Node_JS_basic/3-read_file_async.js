@@ -21,7 +21,7 @@ const countStudents = async (path) => {
       console.log(`Number of students in ${el}: ${studentsWithField.length}. List: ${names}`);
     });
   } catch (e) {
-    throw new Error('Cannot load the database');
+    console.log('Cannot load the database');
   }
 };
 
