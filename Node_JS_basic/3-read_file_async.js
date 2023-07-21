@@ -7,7 +7,7 @@ const countStudents = async (path) => {
     const removeHeader = data.split('\n');
     removeHeader.shift();
     const cleanArr = removeHeader.filter((e) => e);
-    let num = cleanArr.length
+    let num = cleanArr.length;
 
     console.log(`Number of students: ${num}`);
 
