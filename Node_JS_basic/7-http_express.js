@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.write(`This is the list of our students \n`)
+  res.write(`This is the list of our students`)
   countStudents(db)
     .then((data) => {
       res.end(`${data.join('\n')}`);
