@@ -17,7 +17,7 @@ export default class Pricing {
     return `${this.amount} ${this.currency.name} ${this.currency.code}`
   }
 
-  convertPrice(amount, conversionRate) {
+  static convertPrice(amount, conversionRate) {
     if (typeof amount !== 'number' && typeof conversionRate !== 'number') {
       throw new Error('Amout must be a number');
     }
