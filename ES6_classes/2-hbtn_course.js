@@ -12,18 +12,18 @@ export default class HolbertonCourse {
 
   set name(inputName) {
     if (typeof inputNameame !== "string")
-      console.error('Name must be a string')
+      throw new TypeError('Name must be a string')
     this._name = inputName;
   }
 
   set length(inputLength) {
     if (typeof inputLength !== "number")
-      console.error('Length must be a number')
+      throw new TypeError('Length must be a number')
     this._length = inputLength;
   }
   set student(inputStudent) {
     if (!Array.isArray(inputStudent) && !inputStudent.every((s) => typeof s === 'string'))
-      console.error('Students must be an array of strings');
+      throw new TypeError('Students must be an array of strings');
     this._student = inputStudent;
   }
 
