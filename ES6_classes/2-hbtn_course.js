@@ -11,7 +11,7 @@ export default class HolbertonCourse {
   get length() {
     return this._length
   }
-  get student() {
+  get students() {
     return this._student
   }
   // SETTERS
