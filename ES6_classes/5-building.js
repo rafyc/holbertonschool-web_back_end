@@ -17,8 +17,4 @@ export default class Building {
   //   }
   //   this._sqft = newSqtf
   // }
-
-  evacuationWarningMessage() {
-
-  }
 }
