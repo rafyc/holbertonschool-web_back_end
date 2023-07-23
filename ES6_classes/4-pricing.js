@@ -6,11 +6,22 @@ export default class Pricing {
     this.currency = currency;
   }
 
+  get currency() {
+    return this._currency;
+  }
+
   set(newAmount) {
-    if (typeof newAmount != 'number') {
+    if (typeof newAmount !== 'number') {
       throw new Error('Amount must be a number');
     }
     this._amount = newAmount;
+  }
+
+  set currency(newCurrency) {
+    if (!(newCurrency instanceof Currency)) {
+      throw new TypeError('Currency must be an instance of Currency()');
+    }
+    this._currency = newCurrency;
   }
 
   displayFullPrice() {
