@@ -17,8 +17,9 @@ class StudentsController {
   static getAllStudentsByMajor(request, response, file) {
     readDatabase(file)
       .then((data) => {
+        let extractedData;
         if (request.path.includes('SWE')) {
-          [extractedData] = data
+          [extractedData] = data;
         } else if (request.path.includes('CS')) {
           [, extractedData] = data;
         }
