@@ -1,4 +1,4 @@
-import readDatabase from "../utils";
+import readDatabase from '../utils';
 
 class StudentsController {
   static getAllStudents(request, response, file) {
@@ -23,7 +23,7 @@ class StudentsController {
       })
       .catch((err) => {
         console.error(err);
-        response.status(500).send("Cannot load the database"); // Send an error response
+        response.status(500).send('Cannot load the database'); // Send an error response
       });
   }
 }
