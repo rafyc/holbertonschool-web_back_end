@@ -4,8 +4,9 @@ class StudentsController {
   static getAllStudents(request, response, file) {
     readDatabase(file)
       .then((data) => {
-        console.log(data);
-        response.status(200).send(data); // Send the data in the response
+        const formattedData = data.join('\n'); // Join the elements with newline characters
+        console.log(formattedData);
+        response.status(200).send(`This is the list of our students\n${formattedData}`); // Send the formatted data in the response
       })
       .catch((err) => {
         console.error(err);
@@ -16,8 +17,9 @@ class StudentsController {
   static getAllStudentsByMajor(request, response, file) {
     readDatabase(file)
       .then((data) => {
-        console.log(data);
-        response.status(200).send(data); // Send the data in the response
+        const formattedData = data.join('\n'); // Join the elements with newline characters
+        console.log(formattedData);
+        response.status(200).send(`This is the list of our students\n${formattedData}`); // Send the formatted data in the response
       })
       .catch((err) => {
         console.error(err);
