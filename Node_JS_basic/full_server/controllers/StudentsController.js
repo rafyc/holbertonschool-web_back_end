@@ -22,8 +22,7 @@ class StudentsController {
           [extractedData] = data;
         } else if (request.path.includes('CS')) {
           [, extractedData] = data;
-        }
-        else {
+        } else {
           response.status(500).send('Major parameter must be CS or SWE');
         }
 
