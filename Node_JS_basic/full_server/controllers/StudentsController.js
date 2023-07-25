@@ -1,4 +1,5 @@
 import readDatabase from '../utils';
+
 class StudentsController {
   static getAllStudents(request, response, file) {
     readDatabase(file)
@@ -13,16 +14,13 @@ class StudentsController {
       });
   }
 
-
   static getAllStudentsByMajor(request, response, file) {
-
     readDatabase(file)
-
       .then((data) => {
         if (request.path.includes('SWE')) {
-          data = data[0]
+          data = data[0];
         } else if (request.path.includes('CS')) {
-          data = data[1]
+          data = data[1];
         }
         else {
           response.status(500).send('Major parameter must be CS or SWE');
