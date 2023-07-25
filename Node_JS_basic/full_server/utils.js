@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const readDatabase = (file) => {
+function readDatabase(file) {
   return new Promise((resolve, reject) => {
     fs.readFile(file, 'utf-8', (error, data) => {
       if (error) {
