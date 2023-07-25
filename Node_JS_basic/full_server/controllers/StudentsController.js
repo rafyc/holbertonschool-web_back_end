@@ -18,15 +18,15 @@ class StudentsController {
     readDatabase(file)
       .then((data) => {
         if (request.path.includes('SWE')) {
-          data = data[0];
+          [extractedData] = data
         } else if (request.path.includes('CS')) {
-          data = data[1];
+          [, extractedData] = data;
         }
         else {
           response.status(500).send('Major parameter must be CS or SWE');
         }
 
-        const afterColon = data.split('List: ')[1].trim();
+        const afterColon = extractedData.split('List: ')[1].trim();
         response.status(200).send(`${afterColon}`); // Send the formatted data in the response
       })
       .catch((err) => {
