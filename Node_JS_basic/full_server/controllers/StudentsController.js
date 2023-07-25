@@ -21,19 +21,19 @@ class StudentsController {
       .then((data) => {
         if (request.path.includes('SWE')) {
           data = data[0]
-        } if (request.path.includes('CS')) {
+        } else if (request.path.includes('CS')) {
           data = data[1]
         }
         else {
-          response.status(500).end('Major parameter must be CS or SWE');
+          response.status(500).send('Major parameter must be CS or SWE');
         }
 
         const afterColon = data.split('List: ')[1].trim();
-        response.status(200).end(`${afterColon}`); // Send the formatted data in the response
+        response.status(200).send(`${afterColon}`); // Send the formatted data in the response
       })
       .catch((err) => {
         console.error(err);
-        response.status(500).end('Cannot load the database'); // Send an error response
+        response.status(500).send('Cannot load the database'); // Send an error response
       });
   }
 }
