@@ -30,6 +30,6 @@ function readDatabase(file) {
       }
     });
   });
-};
+}
 
 module.exports = readDatabase;
