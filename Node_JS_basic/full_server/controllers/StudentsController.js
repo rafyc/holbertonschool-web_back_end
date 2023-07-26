@@ -32,7 +32,6 @@ class StudentsController {
       .catch((err) => {
         console.error(err);
         response.status(500).send('Cannot load the database'); // Send an error response
-        return;
       });
   }
 }
