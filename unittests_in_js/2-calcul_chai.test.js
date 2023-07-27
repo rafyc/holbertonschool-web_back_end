@@ -8,7 +8,16 @@ describe('calculateNumber', () => {
       expect(calculateNumber('SUM', 1.7, 0)).to.equal(2)
     });
   });
+  describe('when type is DIVIDE', () => {
+    it('it should return Error if b is equal to 0', () => {
+      expect(calculateNumber('DIVIDE', 10.3, 0)).to.equal('Error');
+      expect(calculateNumber('DIVIDE', 10.7, 0)).to.equal('Error');
+      expect(calculateNumber('DIVIDE', 10.3, 0.3)).to.equal('Error');
+      expect(calculateNumber('DIVIDE', 10.7, 0.2)).to.equal('Error');
+    });
+  })
 });
+
 // describe('calculateNumber', () => {
 //   describe('when type is SUM', () => {
 //     it('it round the first argument', () =>{
