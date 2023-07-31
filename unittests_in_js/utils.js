@@ -1,34 +1,20 @@
 const Utils = {
-  calculateNumber: (type, a, b) => {
-    if (typeof a === 'undefined' || typeof b === 'undefined' || typeof type === 'undefined') {
-      throw new Error('Missing arguments');
+  calculateNumber(type, a, b) {
+    let result = 0;
+    if (!type) {
+      throw new TypeError('missing type argument');
+    } if (type === 'SUM') {
+      result = Math.round(a) + Math.round(b);
+    } if (type === 'SUBTRACT') {
+      result = Math.round(a) - Math.round(b);
+    } if (type === 'DIVIDE') {
+      if (Math.round(b) === 0) {
+        return 'Error';
+      }
+      result = Math.round(a) / Math.round(b);
     }
-
-    let arg1 = Number(a);
-    let arg2 = Number(b);
-
-    if (Number.isNaN(arg1) || Number.isNaN(arg2)) {
-      throw new TypeError('The a and b parameters must be integers');
-    }
-
-    if (typeof type !== 'string') {
-      throw new TypeError('The type parameter must be a string');
-    }
-
-    arg1 = Math.round(arg1);
-    arg2 = Math.round(arg2);
-
-    switch (type) {
-      case 'SUM':
-        return arg1 + arg2;
-      case 'SUBTRACT':
-        return arg1 - arg2;
-      case 'DIVIDE':
-        return (arg2 === 0) ? 'Error' : arg1 / arg2;
-      default:
-        throw new Error('The type parameter only accept SUM, SUBTRACT, or DIVIDE');
-    }
-  },
-};
+    return result;
+  }
+}
 
 module.exports = Utils;
