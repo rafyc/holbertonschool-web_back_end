@@ -18,11 +18,7 @@ const displaySchoolValue = async (schoolName) => {
   } catch (err) {
     console.log(err);
   }
-
 }
-
-
-
 
 displaySchoolValue('Holberton');
 setNewSchool('HolbertonSanFrancisco', '100');
