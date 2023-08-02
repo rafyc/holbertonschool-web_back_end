@@ -16,4 +16,3 @@ const job = queue
   })
 job.on('failed', () => { console.log('Notification job failed'); })
 job.on('complete', () => { console.log('Notification job completed'); })
-
